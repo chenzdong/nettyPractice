@@ -6,8 +6,8 @@ import io.netty.channel.*;
 import io.netty.util.CharsetUtil;
 
 /**
- * discare·şÎñHandler
- * ´¦Àí·şÎñÆ÷Í¨µÀ
+ * discareæœåŠ¡Handler
+ * å¤„ç†æœåŠ¡å™¨é€šé“
  *
  *
  * @author: czd
@@ -16,14 +16,14 @@ import io.netty.util.CharsetUtil;
 @ChannelHandler.Sharable
 public class DiscardServiceHandler extends ChannelInboundHandlerAdapter {
     /**
-     * ÈçºÎ´¦Àí½ÓÊÕµÄÊı¾İ
+     * å¦‚ä½•å¤„ç†æ¥æ”¶çš„æ•°æ®
      * @param ctx
      * @param msg
      * @throws Exception
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        //¾²Ä¬·½Ê½¶ªÆú½ÓÊÕµÄÊı¾İ
+        //é™é»˜æ–¹å¼ä¸¢å¼ƒæ¥æ”¶çš„æ•°æ®
 //        ((ByteBuf)msg).release();
         ByteBuf in = (ByteBuf) msg;
         System.out.println("Server receiverd: "+in.toString(CharsetUtil.US_ASCII));
@@ -31,7 +31,7 @@ public class DiscardServiceHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * Í¨Öª´¦ÀíÆ÷×îºóµÄ channelread() ÊÇµ±Ç°Åú´¦ÀíÖĞµÄ×îºóÒ»ÌõÏûÏ¢Ê±µ÷ÓÃ
+     * é€šçŸ¥å¤„ç†å™¨æœ€åçš„ channelread() æ˜¯å½“å‰æ‰¹å¤„ç†ä¸­çš„æœ€åä¸€æ¡æ¶ˆæ¯æ—¶è°ƒç”¨
      * @param ctx
      * @throws Exception
      */
@@ -42,14 +42,14 @@ public class DiscardServiceHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * ·¢ËÍ²¢²¶»ñÒì³£´¦Àí»úÖÆ
+     * å‘é€å¹¶æ•è·å¼‚å¸¸å¤„ç†æœºåˆ¶
      * @param ctx
      * @param cause
      * @throws Exception
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        /* ´òÓ¡Òì³£²¢¹Ø±ÕÁ¬½Ó*/
+        /* æ‰“å°å¼‚å¸¸å¹¶å…³é—­è¿æ¥*/
         cause.printStackTrace();
         ctx.close();
     }
